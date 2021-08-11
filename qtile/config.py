@@ -31,7 +31,6 @@ import subprocess
 from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
 
 # Colors
 trans_light = "#fffffff0"
@@ -41,6 +40,9 @@ inactive_text = "#4f4f4ff9"
 active_text = "#0f0f0ff0"
 highlight_text = "#fdfdfdff"
 dark_cyan = "#09494ff9"
+clear = "#00000000"
+
+# Sunset Colors
 sunset_blue_light = "#dcdbfff0"
 sunset_orange = "#da4c00ef"
 sunset_orange_dark = "#150800f0"
@@ -51,9 +53,32 @@ terminal_orange_light = "ffc9bbf9"
 terminal_purple = "#a180fff9"
 terminal_text = "#fffbf7f9"
 
+# Nautilus Colors
+nautilus_black_dark = "#232627"
+nautilus_black_light =  "#7f8c8d"
+nautilus_red_dark = "#ed4f4f"
+nautilus_red_light = "#c0392b"
+nautilus_green_dark = "#10d180"
+nautilus_green_light = "#1deba3"
+nautilus_yellow_light = "#ff8331"
+nautilus_yellow_dark = "#fdbc4b"
+nautilus_blue_dark = "#1d99f3"
+nautilus_blue_light = "#3daee9"
+nautilus_magenta_dark = "#9b59b6"
+nautilus_magenta_light = "#8e44ad"
+nautilus_cyan_dark = "#1abc9cb9"
+nautilus_cyan_light = "#16a085"
+nautilus_white_dark = "#fcfcfc"
+nautilus_white_light = "#ffffff"
+nautilus_bg = "#0c0d12ff"
+nautilus_bg_cyan = "#0d1416ff"
+nautilus_bg_purple = "#0f0c12ff"
+nautilus_highlight = ""
+nautilus_highlight_blue = "#398f97f0"
+nautilus_inactive_text = "#447a7af7"
+nautilus_text_light = "#c8ebe7ff"
 
 mod = "mod4"
-terminal = guess_terminal()
 
 keys = [
     # Switch between windows
@@ -85,7 +110,6 @@ keys = [
         desc="Toggle between split and unsplit sides of stack"),
 
     # Toggle between different layouts as defined below
-    # Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
 
     # Switch between different groups relative to your current one
@@ -121,8 +145,8 @@ for i in groups:
 layouts = [
     layout.MonadTall(
         margin=18,
-        border_focus = sunset_orange,
-        border_normal = sunset_purple,
+        border_focus = nautilus_highlight_blue,
+        border_normal = nautilus_black_light,
         ),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -144,8 +168,7 @@ widget_defaults = dict(
     fontsize_big = 22,
     padding = 6,
     margin = 3,
-    background = sunset_purple_dark,
-    foreground = terminal_text,
+    foreground = nautilus_text_light,
 )
 
 extension_defaults = widget_defaults.copy()
@@ -155,33 +178,35 @@ screens = [
         top=bar.Bar(
             [
                 widget.GroupBox(
-                    background = sunset_purple_dark,
-                    urgent_border = sunset_purple,
-                    active = terminal_orange_light,
-                    inactive = terminal_text,
+                    background = nautilus_bg_purple,
+                    urgent_border = nautilus_red_light,
+                    active = nautilus_green_light,
+                    inactive = nautilus_inactive_text,
                     highlight_method = "line",
-                    highlight_color = "#00000000",
+                    highlight_color = clear,
                     rounded = False,
                     this_screen_border = trans_light,
-                    this_current_screen_border = terminal_text,
-                    block_highlight_text_color = sunset_orange,
-                    margin = 6,
+                    this_current_screen_border = nautilus_yellow_light,
+                    block_highlight_text_color = terminal_text,
+                    margin = 5,
                     ),
                 widget.WindowName(
                     empty_string_group='Desktop',
-                    background = trans_dark,
+                    background = nautilus_bg,
                     ),
-                widget.Mpris2(name='media! '),
+                widget.Mpris2(name='media! ',
+                    background = nautilus_bg_purple,
+                    ),
                 widget.Notify(),
                 widget.Systray(),
                 widget.Clock(
-                    background = sunset_purple_dark,
-                    foreground = terminal_text,
+                    background = nautilus_bg_purple,
                     format = '%a, %B %d %Y | %I:%M %p',
                     ),
             ],
             32,
-            background = trans_dark,
+            background = nautilus_bg,
+            foreground = nautilus_text_light,
             margin = [12, 12, 0, 12],
         ),
     ),
@@ -218,7 +243,7 @@ focus_on_window_activation = "smart"
 @hook.subscribe.startup_once
 def autostart():
     home = os.path.expanduser('~')
-    subprocess.Popen(['/usr/home/ken/.loginrc/qtile_start.sh'])
+    subprocess.Popen(['/home/ken/.loginrc/qtile_start.sh'])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
