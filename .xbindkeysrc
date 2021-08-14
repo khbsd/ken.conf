@@ -1,0 +1,49 @@
+# KDE Navigation
+#"qdbus org.kde.KWin /KWin nextDesktop"
+#	Super_L+Mod2+Mod4 + b:5
+	
+#"qdbus org.kde.KWin /KWin previousDesktop"
+#	Super_L+Mod2+Mod4 + b:4
+
+
+# Utilities
+"maim -s | xclip -selection clipboard -t image/png"
+	Mod2 + Mod4 + Shift + s
+
+"xscreensaver"
+	Mod2 + Mod4 + l
+
+"pamixer -i 2"
+	XF86AudioRaiseVolume
+
+"pamixer -d 2"
+	XF86AudioLowerVolume
+
+"pamixer -t"
+	XF86AudioMute
+
+"playerctl -a play-pause"	
+	XF86AudioPlay
+	
+"playerctl -a next"
+	XF86AudioNext
+
+"playerctl -a previous"
+	XF86AudioPrev
+
+"playerctl -a stop"
+	XF86AudioStop
+
+
+# Launchers
+"kitty"
+	Mod2 + Mod4 + Return
+
+"kitty ranger"
+	Mod2 + Mod4 + e
+
+"firefox" 
+	Mod2 + Mod4 + f
+
+"rofi -show run"
+	Mod2 + Mod4 + r
