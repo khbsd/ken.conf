@@ -31,7 +31,70 @@ import subprocess
 from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-from colors import * # I know I know, but it's literally a file with only variables lmao
+
+# Colors
+trans_light = "#fffffff0"
+trans_dark = "#000000f0"
+trans_cyan = "#00d5fff2"
+inactive_text = "#4f4f4ff9"
+active_text = "#0f0f0ff0"
+highlight_text = "#fdfdfdff"
+dark_cyan = "#09494ff9"
+clear = "#00000000"
+
+# Sunset Colors
+sunset_blue_light = "#dcdbfff0"
+sunset_orange = "#da4c00ef"
+sunset_orange_dark = "#150800f0"
+sunset_purple = "#7800daef"
+sunset_purple_dark = "#02000cff"
+terminal_orange = "#ff755eef"
+terminal_orange_light = "ffc9bbf9"
+terminal_purple = "#a180fff9"
+terminal_text = "#fffbf7f9"
+
+# Nautilus Colors
+nautilus_black_dark = "#232627"
+nautilus_black_light =  "#7f8c8d"
+nautilus_red_dark = "#ed4f4f"
+nautilus_red_light = "#c0392b"
+nautilus_green_dark = "#10d180"
+nautilus_green_light = "#1deba3"
+nautilus_yellow_light = "#ff8331"
+nautilus_yellow_dark = "#fdbc4b"
+nautilus_blue_dark = "#1d99f3"
+nautilus_blue_light = "#3daee9"
+nautilus_magenta_dark = "#9b59b6"
+nautilus_magenta_light = "#8e44ad"
+nautilus_cyan_dark = "#1abc9cb9"
+nautilus_cyan_light = "#16a085"
+nautilus_white_dark = "#fcfcfc"
+nautilus_white_light = "#ffffff"
+nautilus_bg = "#0c0d12ff"
+nautilus_bg_cyan = "#0d1416ff"
+nautilus_bg_purple = "#0f0c12ff"
+nautilus_highlight = ""
+nautilus_highlight_blue = "#398f97f0"
+nautilus_inactive_text = "#447a7af7"
+nautilus_text_light = "#c8ebe7ff"
+
+# Obra Dinn Colors
+obradinn_text = "#fcfdc2f9"
+obradinn_text_inactive = "#fcfdc280"
+obradinn_fg_light1 = "#fdfde2f9"
+obradinn_fg_light2 = "#fdf8f2ff"
+obradinn_fg_dark1 = "#d0c8c0fd"
+obradinn_fg_dark2 = "#baac9df9"
+obradinn_fg_dark3 = "#7a6c5da0"
+obradinn_fg_blue1 = "#d1ebfff9"
+obradinn_fg_blue2 = "#e3fcfff9"
+obradinn_bg_dark1 = "#1b1324f9"
+obradinn_bg_dark2 = "#1b1324d0"
+obradinn_red = "#fcffa6f9"
+obradinn_orange = "#ffb280f9"
+obradinn_green = "#40e592f9"
+obradinn_blue = "#60a8fff9"
+obradinn_purple = "#d537fff9"
 
 mod = "mod4"
 
@@ -99,17 +162,10 @@ for i in groups:
 
 layouts = [
     layout.MonadTall(
-        margin = 18,
-        border_normal = rivet_bg,
-        border_focus = rivet_bg,
-        border_width = 0,
-        padding = 4,
-    ),
-    layout.Floating(
-        border_width = 1,
-        border_normal = rivet_grays_2,
-        border_focus = rivet_grays_2,
-    ),
+        margin=18,
+        border_focus = obradinn_text,
+        border_normal = obradinn_fg_dark1,
+        ),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
@@ -124,141 +180,52 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font = 'Ubuntu',
+    font = 'DejaVu Sans Mono Bold',
     fontsize = 15,
+    fontsize_small = 10,
+    fontsize_big = 22,
     padding = 6,
-    foreground = rivet_grays_2,
+    #margin = 6,
+    foreground = obradinn_bg_dark1,
 )
 
-def icon_defaults():
-    return {
-        'fontsize':38,
-        'foreground':rivet_blues_3,
-        'background':rivet_bg,
-    }
-
-def toggleable_defaults():
-    return {
-        'background':rivet_bg,
-        'close_button_location':'right',
-        'fontsize':18,
-        'text_closed':'',
-        'text_open':'',
-    }
-
-def separator_defaults():
-    return {
-        'foreground':rivet_oranges_2,
-        'background':rivet_bg,
-        'fontsize':16,
-    }
-
-gears = widget.TextBox(
-           text = "",
-           **icon_defaults(),
-)
-gear = widget.TextBox(
-           text = "",
-           **icon_defaults(),
-)
-wrench = widget.TextBox(
-           text = "",
-           **icon_defaults(),
-)
-numberline = widget.TextBox(
-           text = "",
-           **icon_defaults(),
-)
-window_title = widget.TextBox(
-           text = "",
-           **icon_defaults(),
-)
-orange_dots_sep = widget.TextBox(
-           text = "",
-           **separator_defaults(),
-)
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
         top=bar.Bar(
             [
-                orange_dots_sep,
-                numberline,
                 widget.GroupBox(
-                    fontsize = 16,
-                    font = 'Ubuntu Bold',
-                    background = rivet_bg,
-                    urgent_border = rivet_oranges_2,
-                    active = rivet_oranges_3,
-                    inactive = rivet_grays_1,
-                    highlight_method = "border",
+                    background = obradinn_text,
+                    urgent_border = obradinn_red,
+                    active = obradinn_bg_dark2,
+                    inactive = obradinn_fg_dark3,
+                    highlight_method = "line",
                     highlight_color = clear,
-                    rounded = True,
-                    border_radius = 9,
-                    borderwidth = 2,
-                    disable_drag = True,
-                    hide_unused = True,
-                    this_screen_border = clear,
-                    this_current_screen_border = rivet_grays_2,
-                    block_highlight_text_color = rivet_grays_2,
-                    margin = 3,
-                    margin_x = 10,
-                ),
-                orange_dots_sep,
-                window_title,
+                    rounded = False,
+                    this_screen_border = trans_light,
+                    this_current_screen_border = obradinn_bg_dark2,
+                    block_highlight_text_color = obradinn_bg_dark1,
+                    margin = 5,
+                    ),
                 widget.WindowName(
                     empty_string_group='Desktop',
-                    background = rivet_bg,
-                    fontsize = 18,
-                ),
-                orange_dots_sep,
-                widget.Battery(
-                    foreground = rivet_blues_3,
-                    background = rivet_bg,
-                    charge_char = '',
-                    discharge_char = '',
-                    empty_char = '',
-                    fontsize = 28,
-                    format = '{char}',
-                    update_interval = 1,
-                ),
-                widget.WidgetBox(
-                    **toggleable_defaults(), 
-                    widgets = [
-                        widget.Battery(
-                            background = rivet_bg,
-                            fontsize = 18,
-                            format = '{percent:2.0%} {hour:d}:{min:02d} {watt:.2f} W',
-                            update_interval = 45,
-                        ),    
-                    ],
-                ),
-                orange_dots_sep,
+                    background = obradinn_text,
+                    ),
+                widget.Mpris2(name='media! ',
+                    background = obradinn_text,
+                    ),
+                widget.Battery(),
+                widget.Notify(),
+                widget.Systray(),
                 widget.Clock(
-                    background = rivet_bg,
-                    foreground = rivet_blues_3,
-                    font = 'Ubuntu Bold',
-                    fontsize = 16,
-                    format = '%I:%M\n%p',
-                    padding = 5,
-                ),
-                widget.WidgetBox(
-                   **toggleable_defaults(), 
-                    widgets = [
-                        widget.Clock(
-                            background = rivet_bg,
-                            fontsize = 18,
-                            format = '%a, %B %d %Y',
-                            padding = 5, 
-                        ),
-                    ],
-                ),
+                    background = obradinn_text,
+                    format = '%a, %B %d %Y | %I:%M %p',
+                    ),
             ],
             36,
-            background = clear,
-            foreground = clear,
-            padding = 2,
+            background = obradinn_text,
+            foreground = obradinn_bg_dark1,
             margin = [12, 12, 0, 12],
         ),
     ),
@@ -279,16 +246,16 @@ main = None  # WARNING: this is deprecated and will be removed soon
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
-#floating_layout = layout.Floating(float_rules=[
+floating_layout = layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
-    #*layout.Floating.default_float_rules,
-    #Match(wm_class='confirmreset'),  # gitk
-    #Match(wm_class='makebranch'),  # gitk
-    #Match(wm_class='maketag'),  # gitk
-    #Match(wm_class='ssh-askpass'),  # ssh-askpass
-    #Match(title='branchdialog'),  # gitk
-    #Match(title='pinentry'),  # GPG key password entry
-#])
+    *layout.Floating.default_float_rules,
+    Match(wm_class='confirmreset'),  # gitk
+    Match(wm_class='makebranch'),  # gitk
+    Match(wm_class='maketag'),  # gitk
+    Match(wm_class='ssh-askpass'),  # ssh-askpass
+    Match(title='branchdialog'),  # gitk
+    Match(title='pinentry'),  # GPG key password entry
+])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 

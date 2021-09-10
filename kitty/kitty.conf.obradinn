@@ -56,7 +56,7 @@ font_size 11.5
 #: than 100% to reduce sizes (but this might cause rendering
 #: artifacts).
 
-#adjust_baseline 110%
+adjust_baseline 110%
 
 #: Adjust the vertical alignment of text (the height in the cell at
 #: which text is positioned). You can use either numbers, which are
@@ -734,12 +734,12 @@ hide_window_decorations yes
 
 #: Color scheme {{{
 
-foreground #e9e9e9 
-background #131313
+foreground #feffd4 
+background #080713
 
 #: The foreground and background colors
 
-background_opacity .85
+background_opacity .8
 
 #: The opacity of the background. A number between 0 and 1, where 1 is
 #: opaque and 0 is fully transparent.  This will only work if
@@ -794,60 +794,60 @@ background_opacity .85
 #: How much to dim text that has the DIM/FAINT attribute set. One
 #: means no dimming and zero means fully dimmed (i.e. invisible).
 
-selection_foreground #131313
+selection_foreground #1a1223
 
 #: The foreground for text selected with the mouse. A value of none
 #: means to leave the color unchanged.
 
-selection_background #e9e9e9
+selection_background #fbfcc1
 
 #: The background for text selected with the mouse.
 
-#: The color  tabl e {{{
+#: The color  table {{{
 
 #: The 256 terminal colors. There are 8 basic colors, each color has a
 #: dull and bright version, for the first 16 colors. You can set the
 #: remaining 240 colors as color16 to color255.
 
-color0 #e4e4e4
-color8 #f2f2f2
+color0 #808080
+color8 #e5e8e1
 
-#:black
+black
 
-color1 #67ffb4
-color9 #00e876
+color1 #ffa8a8
+color9 #ffc8c8
 
-#:red
+red
 
-color2  #e65802
-color10 #b84500
+color2  #fcffa6
+color10 #fdffc6
 
-#:green
+green
 
-color3  #129fc9
-color11 #007294
+color3  #ffe6d1
+color11 #fff8e2
 
-#:yellow
+yellow
 
-color4  #ff914f
-color12 #ffb385
+color4  #fcfdc2
+color12 #fefee2
 
-#:blue
+blue
 
 color5  #d1ebff
 color13 #e3fcff
 
-#:magenta
+magenta
 
-color6  #67ffe5
-color14 #40faaf
+color6  #95c5ff
+color14 #a7d7ff
 
-#:cyan
+cyan
 
-color7  #dedede
-color15 #cdcdcd
+color7  #eddeeb
+color15 #ffffff
 
-#:white
+white
 
 # mark1_foreground black
 
@@ -873,7 +873,7 @@ color15 #cdcdcd
 
 #: Color for marks of type 3 (violet)
 
-#: }}}  
+#: }}} 
 
 #: }}}
 

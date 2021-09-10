@@ -1,0 +1,133 @@
+/* ==========================================================================
+   File: rivet-common.rasi
+   Desc: basic rivet config
+   Author: khb.dev@gmail.com
+   Modified: 09.01.2021
+   ========================================================================== */
+
+window {
+    background-color: @background;
+    font: "Ubuntu 14";
+}
+
+mainbox {
+    border:  0;
+    padding: 2px;
+}
+
+message {
+    border:       2px 0 0;
+    border-color: @separatorcolor;
+    padding:      1px;
+}
+
+textbox {
+    highlight:  @highlight;
+    text-color: @foreground;
+}
+
+listview {
+    padding:      2px 0 0;
+    border:	  2 0 0 0;
+    border-color: @separatorcolor;
+    spacing:      2px;
+    scrollbar:    @scrollbar;
+}
+
+element {
+    padding: 4px;
+}
+
+element.normal.normal {
+    background-color: @normal-background;
+    text-color:       @normal-foreground;
+}
+
+element.normal.urgent {
+    background-color: @urgent-background;
+    text-color:       @urgent-foreground;
+}
+
+element.normal.active {
+    background-color: @active-background;
+    text-color:       @active-foreground;
+}
+
+element.selected.normal {
+    background-color: @selected-normal-background;
+    border: 	      2px solid;
+    border-color:     @rivet-grays-2;
+    border-radius:    3;
+    text-color:       @selected-normal-foreground;
+    padding: 	      3px solid;
+}
+
+element.selected.urgent {
+    background-color: @selected-urgent-background;
+    text-color:       @selected-urgent-foreground;
+}
+
+element.selected.active {
+    background-color: @selected-active-background;
+    text-color:       @selected-active-foreground;
+}
+
+element.alternate.normal {
+    background-color: @alternate-normal-background;
+    text-color:       @alternate-normal-foreground;
+}
+
+element.alternate.urgent {
+    background-color: @alternate-urgent-background;
+    text-color:       @alternate-urgent-foreground;
+}
+
+element.alternate.active {
+    background-color: @alternate-active-background;
+    text-color:       @alternate-active-foreground;
+}
+
+scrollbar {
+    width:        2px;
+    border:       2;
+    handle-color: @scrollbar-handle;
+    handle-width: 0px;
+    padding:      0;
+}
+
+mode-switcher {
+    border:       2px 0 0;
+    border-color: @separatorcolor;
+}
+
+inputbar {
+    spacing:    0;
+    text-color: @selected-normal-foreground;
+    padding:    2px;
+    children:   [ prompt, textbox-prompt-sep, entry, case-indicator ];
+}
+
+case-indicator,
+entry,
+prompt,
+button {
+    spacing:    0;
+    text-color: @normal-foreground;
+}
+
+button.selected {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+
+textbox-prompt-sep {
+    expand:     false;
+    font: "Ubuntu Nerd Font 14";
+    str:        "  ";
+    text-color: @rivet-blues-3;
+    margin:     0 0.3em 0 0;
+}
+element-text, element-icon {
+    background-color: inherit;
+    text-color:       inherit;
+}

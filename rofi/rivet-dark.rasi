@@ -1,0 +1,65 @@
+/* ==========================================================================
+   Rofi color theme
+
+   File: rivet-dark.rasi
+   Desc: Rivet theme for rofi- probably a WIP
+   Author: khb.dev@gmail.com
+   Modified: 09.01.2021
+   ========================================================================== */
+
+* {
+    /* Theme settings */
+    highlight: bold;
+    scrollbar: true;
+
+    /* Rivet Colors */
+	rivet-fg: 		 #e9e9e9;
+	rivet-bg: 		 #232323;
+	rivet-grays-1: 		 #e4e4e4;
+	rivet-grays-2: 		 #f2f2f2;
+	rivet-grays-3: 		 #dedede;
+	rivet-grays-4: 		 #cdcdcd;
+	rivet-oranges-1: 	 #e65802;
+	rivet-oranges-2: 	 #b84500;
+	rivet-oranges-3: 	 #ff914f;
+	rivet-oranges-4: 	 #ffb385;
+	rivet-oranges-5: 	 #981500;
+	rivet-greens-1: 	 #129fc9;
+	rivet-greens-2: 	 #007294;
+	rivet-blues-1: 		 #d1ebff;
+	rivet-blues-2: 		 #e3fcff;
+	rivet-blues-3: 		 #67ffe5;
+	rivet-blues-4: 		 #40faaf;
+	rivet-blues-5: 		 #003f52;
+
+    /* Theme colors */
+    background:                  @rivet-bg;
+    background-color:            @rivet-bg;
+    foreground:                  @rivet-oranges-2;
+    separatorcolor:              @rivet-oranges-2;
+    scrollbar-handle:            @rivet-blues-3;
+
+    normal-background:           @rivet-bg;
+    normal-foreground:           @rivet-oranges-3;
+    alternate-normal-background: @rivet-bg;
+    alternate-normal-foreground: @rivet-oranges-3;
+    selected-normal-background:  @rivet-bg;
+    selected-normal-foreground:  @rivet-grays-2;
+
+    active-background:           @rivet-bg;
+    active-foreground:           @rivet-oranges-2;
+    alternate-active-background: @rivet-bg;
+    alternate-active-foreground: @rivet-grays-2;
+    selected-active-background:  @rivet-bg;
+    selected-active-foreground:  @rivet-oranges-3;
+
+    urgent-background:           @rivet-bg;
+    urgent-foreground:           @rivet-oranges-5;
+    alternate-urgent-background: @rivet-bg;
+    alternate-urgent-foreground: @rivet-oranges-5;
+    selected-urgent-background:  @rivet-bg;
+    selected-urgent-foreground:  @rivet-grays-2;
+}
+
+@import "/home/ken/.config/rofi/rivet-common.rasi"
+

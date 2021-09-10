@@ -1,0 +1,22 @@
+# Utilities
+XF86MonBrightness{Down,Up}
+	xbacklight {-dec 5,-inc 5}
+
+# Audio
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+	pamixer {-i 2,-d 2,-t}
+
+XF86Audio{Play,Next,Prev,Stop}
+	playerctl -a {play-pause,next,previous,stop}
+
+
+# Launchers
+super + {e,f,r,Return}
+	{kitty lf,firefox,rofi -show drun -p "",kitty}
+
+
+# Utilities
+super + {l, shift + s}
+	{xscreensaver,maim -s | xclip -selection clipboard -t image/png}
+Print
+	maim ~/Pictures/$(date +%s).png
