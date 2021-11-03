@@ -1,8 +1,8 @@
 #! /bin/sh
 
-exec /home/ken/.loginrc/autostart.sh &
+exec /home/ken/.loginrc/beastie-start.sh &
 
-pgrep -x sxhkd > /dev/null || sxhkd &
+sxhkd -c /usr/home/ken/.config/sxhkd/sxhkdrc &
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
