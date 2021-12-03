@@ -1,1 +1,4 @@
-@theme "/home/ken/.config/rofi/rivet-dark.rasi"
+configuration {
+	theme:	"gruvbox-dark-hard";
+	font: 	"Iosevka 12";
+}

@@ -1,20 +1,25 @@
 # Launchers
-super + {e,f,r,Return}
-	{kitty lf,firefox,rofi -show drun -p "",kitty}
+super + {e,f,r,Return,s}
+	{kitty lf,firefox,rofi -show drun -p "",kitty,kitty spt}
+
 
 # Utilities
-XF86MonBrightness{Down,Up}
-	xbacklight {-dec 5,-inc 5}
+super + ctrl + s
+	maim -s | xclip -selection clipboard -t image/png
 
-super + shift + s
-	xclip -selection clipboard -t image/png
+super + Print
+	maim ~/Pictures/$(date +%s).png
 
-# Audio
-XF86Audio{RaiseVolume,LowerVolume,Mute}
-	pamixer {-i 2,-d 2,-t}
+# Media
 
-XF86Audio{Play,Next,Prev,Stop}
-	playerctl -a {play-pause,next,previous,stop}
+super + alt + bracket{right,left}
+	pamixer {-i 2,-d 2}
+
+super + alt + m
+	pamixer -t
+
+super + alt + {space,i,o,p}
+	playerctl {play-pause,next,previous,stop}
 
 #
 # bspwm hotkeys
@@ -22,69 +27,70 @@ XF86Audio{Play,Next,Prev,Stop}
 
 # restart bspwm, sxhkd
 super + alt + {r,s}
-	{bspc wm -r,pkill -USR1 -x sxhkd}
+	{bspc wm -r,killall sxhkd && sxhkd -c /home/ken/.config/sxhkd/sxhkdrc}
 
 # close and kill
 super + w
 	bspc node -c
 
 # alternate between the tiled and monocle layout
-super + m
+super + ctrl + m
 	bspc desktop -l next
 
 # swap the current node and the biggest window
-super + g
+super + ctrl + g
 	bspc node -s biggest.window
 
-#rotate windows
-super + ctrl + {l,j}
-    bspc node @/ -C {forward,backward}
 
 #
 # state/flags
 #
 
 # set the node flags
-super + ctrl + {m,x,y,z}
-	bspc node -g {marked,locked,sticky,private}
+#super + ctrl + {m,x,y,z}
+#	bspc node -g {marked,locked,sticky,private}
 
 #
 # focus/swap
 #
 
+# focus the node for the given path jump
+#super + {p,b,comma,period}
+#	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous window in the current desktop
+#alt + {grave,Tab}
+#	bspc node -f {prev,next}.local.!hidden.window
+
 # focus the node in the given direction
 super + {j,k,i,l}
 	bspc node -f {west,south,north,east}
-
-# focus the node for the given path jump
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
-
-# focus the next/previous window in the current desktop
-alt + {grave,Tab}
-	bspc node -f {prev,next}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
 super + {grave,Tab}
 	bspc desktop -f {prev,next}.local
 
-# focus the last node/desktop
-super + space + {grave,Tab}
-	bspc {node,desktop} -f last
-
 # focus or send to the given desktop
 super + {_,ctrl + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# rotate windows
+alt + {grave,Tab}
+	bspc node @/ -C {forward,backward}
 
 #
 # move/resize
 #
 
+# make window floating
+super + ctrl + f
+	bspc node -t \~ floating
+
 # expand a window by moving one of its side outward
-super + alt + {j,k,i,l}
+super + ctrl + {j,k,i,l}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # contract a window by moving one of its side inward
-super + alt + shift + {j,k,i,l}
+super + ctrl + shift + {j,k,i,l}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
