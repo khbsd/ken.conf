@@ -2,17 +2,17 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-ZSH=/usr/local/share/oh-my-zsh
+ZSH=/usr/local/share/ohmyzsh
 
 fpath+=("/usr/local/share/zsh/site-functions")
 fpath+=("/usr/local/share/zsh/5.8")
-fpath+=("/usr/local/share/oh-my-zsh/pure")
+fpath+=("/usr/local/share/ohmyzsh/pure")
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="usb-pure"
+ZSH_THEME="lambda"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -108,4 +108,7 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
 
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh	
 source $ZSH/oh-my-zsh.sh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
